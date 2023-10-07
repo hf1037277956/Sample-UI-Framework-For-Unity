@@ -8,8 +8,21 @@ using Random = System.Random;
 public class MainPanel : UICpt
 {
     private Text timeText;
+
+    private Button _popOneBtn;
+    private Button popOneBtn
+    {
+        get
+        {
+            if (_popOneBtn == null)
+            {
+                _popOneBtn = Get<Button>("PopOneBtn");
+            }
+            return _popOneBtn;
+        }
+    }
     
-    private Button popOneBtn;
+    
     private Button popTwoBtn;
     private Button panelOneBtn;
     private Button panelTwoBtn;
@@ -23,7 +36,7 @@ public class MainPanel : UICpt
         timeText = Get<Text>("TimeText");
         timeText.text = DateTime.Now.ToString("HH:mm:ss");
 
-        popOneBtn = Get<Button>("PopOneBtn");
+        //popOneBtn = Get<Button>("PopOneBtn");
         popTwoBtn = Get<Button>("PopTwoBtn");
         panelOneBtn = Get<Button>("PanelOneBtn");
         panelTwoBtn = Get<Button>("PanelTwoBtn");

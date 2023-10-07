@@ -1,0 +1,33 @@
+using UnityEngine;
+using UnityEngine.UI;
+
+[UI(UIName.[[PanelName]])]
+public partial class [[CptName]]Cpt : UICpt
+{
+    #region Binding
+            
+    private [[CtrlType]] _[[CtrlName]];
+    public [[CtrlType]] [[CtrlName]]
+    {
+        get
+        {
+            if (_[[CtrlName]] == null)
+            {
+                _[[CtrlName]] = this.Get<[[CtrlType]]>("[[CtrlName]]");
+            }
+            return _[[CtrlName]];
+        }
+    }
+            
+    #endregion
+    
+    public override void Awake()
+    {
+        base.Awake();
+    }
+
+    public override void ApplyInfo()
+    {
+        base.ApplyInfo();
+    }
+}
