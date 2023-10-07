@@ -29,7 +29,7 @@ public class ReferenceCollectorEditor : Editor
         nameof(InputField),
     };
 
-	private static readonly Dictionary<string, Type> classTypes = new()
+	private static readonly Dictionary<string, Type> classTypes = new Dictionary<string, Type>()
     {
 	    {nameof(Object), typeof(Object)},
 	    {nameof(GameObject), typeof(GameObject)},
@@ -93,7 +93,7 @@ public class ReferenceCollectorEditor : Editor
 
         dataList = new ReorderableList(serializedObject, serializedObject.FindProperty("data"), true, true, false, false);
 		//绘制元素
-        dataList.drawElementCallback = (rect, i, _, _) =>
+        dataList.drawElementCallback = (rect, i, a ,b ) =>
         {
             var itemData = dataList.serializedProperty.GetArrayElementAtIndex(i);
 			

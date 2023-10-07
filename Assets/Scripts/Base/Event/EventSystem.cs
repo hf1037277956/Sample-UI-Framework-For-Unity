@@ -12,7 +12,7 @@ public sealed class EventSystem
         set => _instance = value;
     }
 
-    private readonly Dictionary<Type, List<object>> _allEvents = new();
+    private readonly Dictionary<Type, List<object>> _allEvents = new Dictionary<Type, List<object>>();
     
     // 利用反射获取所有的事件
     public void Init(Assembly assembly)
@@ -28,11 +28,12 @@ public sealed class EventSystem
                 continue;
             }
 
-            if (attrs[0] is not EventAttribute eventAttribute)
+            if (attrs[0] != null)
             {
-                continue;
+                if(!(attrs[0] is EventAttribute)) continue;
             }
 
+            EventAttribute eventAttribute = attrs[0] as EventAttribute;
             if (_allEvents.ContainsKey(type))
             {
                 throw new Exception($"{eventAttribute} 有重复的Event");

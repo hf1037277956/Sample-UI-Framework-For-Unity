@@ -22,7 +22,7 @@ public class PanelOneCpt : UICpt
     
     private ScrollRect scrollRect;
     
-    private List<PanelOneItemCpt> itemCptList = new();
+    private List<PanelOneItemCpt> itemCptList = new List<PanelOneItemCpt>();
 
     private Action action;
     

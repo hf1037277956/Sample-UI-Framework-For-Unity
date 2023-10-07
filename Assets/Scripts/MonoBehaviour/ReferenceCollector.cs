@@ -23,9 +23,9 @@ public class ReferenceCollectorDataComparer : IComparer<ReferenceCollectorData>
 
 public class ReferenceCollector : MonoBehaviour, ISerializationCallbackReceiver
 {
-	public List<ReferenceCollectorData> data = new();
+	public List<ReferenceCollectorData> data = new List<ReferenceCollectorData>();
 	
-	private readonly Dictionary<string, ReferenceCollectorData> dict = new();
+	private readonly Dictionary<string, ReferenceCollectorData> dict = new Dictionary<string, ReferenceCollectorData>();
 	
 #if UNITY_EDITOR
 	public void Add(string key, string type, UnityEngine.Object obj)
@@ -130,7 +130,9 @@ public class ReferenceCollector : MonoBehaviour, ISerializationCallbackReceiver
 		dict.Clear();
 		foreach (ReferenceCollectorData referenceCollectorData in data)
 		{
-			this.dict.TryAdd(referenceCollectorData.key, referenceCollectorData);
+			if(dict.ContainsKey(referenceCollectorData.key)) continue;
+			dict.Add(referenceCollectorData.key, referenceCollectorData);
+			//this.dict.TryAdd(referenceCollectorData.key, referenceCollectorData);
 		}
 	}
 }

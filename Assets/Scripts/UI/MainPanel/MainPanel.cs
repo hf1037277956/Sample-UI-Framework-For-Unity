@@ -8,13 +8,26 @@ using Random = System.Random;
 public class MainPanel : UICpt
 {
     private Text timeText;
+
+    private Button _popOneBtn;
+    private Button popOneBtn
+    {
+        get
+        {
+            if (_popOneBtn == null)
+            {
+                _popOneBtn = Get<Button>("PopOneBtn");
+            }
+            return _popOneBtn;
+        }
+    }
     
-    private Button popOneBtn;
+    
     private Button popTwoBtn;
     private Button panelOneBtn;
     private Button panelTwoBtn;
     
-    private List<int> numList = new();
+    private List<int> numList = new List<int>();
     
     private float lastUpdateTime;
 
@@ -23,7 +36,7 @@ public class MainPanel : UICpt
         timeText = Get<Text>("TimeText");
         timeText.text = DateTime.Now.ToString("HH:mm:ss");
 
-        popOneBtn = Get<Button>("PopOneBtn");
+        //popOneBtn = Get<Button>("PopOneBtn");
         popTwoBtn = Get<Button>("PopTwoBtn");
         panelOneBtn = Get<Button>("PanelOneBtn");
         panelTwoBtn = Get<Button>("PanelTwoBtn");
@@ -46,7 +59,7 @@ public class MainPanel : UICpt
     public override void ApplyInfo()
     {
         // 随机生成20个数字
-        Random random = new();
+        Random random = new Random();
         numList.Clear();
         for (int i = 0; i < 20; i++)
         {
