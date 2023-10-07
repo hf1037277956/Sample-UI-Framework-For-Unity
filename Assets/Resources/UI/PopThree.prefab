@@ -1139,9 +1139,6 @@ MonoBehaviour:
   - key: PopOneBtn
     type: Button
     data: {fileID: 6298671701458685540}
-  - key: PopTwoBtn
-    type: Button
-    data: {fileID: 3070735263073118960}
   - key: PanelOneBtn
     type: Button
     data: {fileID: 1354333180665162298}
