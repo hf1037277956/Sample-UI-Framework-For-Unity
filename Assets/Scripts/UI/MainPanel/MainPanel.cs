@@ -14,7 +14,7 @@ public class MainPanel : UICpt
     private Button panelOneBtn;
     private Button panelTwoBtn;
     
-    private List<int> numList = new();
+    private List<int> numList = new List<int>();
     
     private float lastUpdateTime;
 
@@ -46,7 +46,7 @@ public class MainPanel : UICpt
     public override void ApplyInfo()
     {
         // 随机生成20个数字
-        Random random = new();
+        Random random = new Random();
         numList.Clear();
         for (int i = 0; i < 20; i++)
         {

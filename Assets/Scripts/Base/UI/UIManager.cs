@@ -9,8 +9,8 @@ public class UIManager : MonoBehaviour
 
     private Assembly Assembly;
 
-    private Dictionary<string, UICpt> allShowUICpts = new();
-    private Dictionary<string, Type> allUIComponents = new();
+    private Dictionary<string, UICpt> allShowUICpts = new Dictionary<string, UICpt>();
+    private Dictionary<string, Type> allUIComponents = new Dictionary<string, Type>();
 
     private void Awake()
     {
@@ -62,12 +62,13 @@ public class UIManager : MonoBehaviour
                 continue;
             }
 
-            if (attrs[0] is not UIAttribute uiAttribute)
+            if (attrs[0] != null)
             {
-                continue;
+                if(!(attrs[0] is UIAttribute)) continue;
             }
-
-            if (allUIComponents.ContainsKey(uiAttribute.Name))
+            
+            UIAttribute uiAttribute = attrs[0] as UIAttribute;
+            if (uiAttribute != null && allUIComponents.ContainsKey(uiAttribute.Name))
             {
                 throw new Exception($"{uiAttribute.Name} 有重复的Component");
             }

@@ -9,7 +9,7 @@ public class UIBaseCpt
     public Animation animation;
     public ReferenceCollector rc;
     
-    private Dictionary<long, UIBaseCpt> childUIBaseCpts = new();
+    private Dictionary<long, UIBaseCpt> childUIBaseCpts = new Dictionary<long, UIBaseCpt>();
 
     public long Id { get; set; }
 
