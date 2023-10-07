@@ -3,3 +3,6 @@ Assembly-CSharp-Editor.csproj
 Assembly-CSharp.csproj
 Library/
 Logs/
+Temp/
+obj/
+.idea/
