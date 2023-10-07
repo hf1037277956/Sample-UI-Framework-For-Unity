@@ -9,8 +9,8 @@ public class UIManager : MonoBehaviour
 
     private Assembly Assembly;
 
+    private Dictionary<string, Type> allUITypes = new Dictionary<string, Type>();
     private Dictionary<string, UICpt> allShowUICpts = new Dictionary<string, UICpt>();
-    private Dictionary<string, Type> allUIComponents = new Dictionary<string, Type>();
 
     private void Awake()
     {
@@ -53,7 +53,7 @@ public class UIManager : MonoBehaviour
     public void Init(Assembly assembly)
     {
         Assembly = assembly;
-        allUIComponents.Clear();
+        allUITypes.Clear();
         foreach (Type type in Assembly.GetTypes())
         {
             object[] attrs = type.GetCustomAttributes(typeof(UIAttribute), false);
@@ -68,11 +68,11 @@ public class UIManager : MonoBehaviour
             }
             
             UIAttribute uiAttribute = attrs[0] as UIAttribute;
-            if (uiAttribute != null && allUIComponents.ContainsKey(uiAttribute.Name))
+            if (uiAttribute != null && allUITypes.ContainsKey(uiAttribute.Name))
             {
-                throw new Exception($"{uiAttribute.Name} 有重复的Component");
+                throw new Exception($"{uiAttribute.Name} 有重复的UI Type");
             }
-            allUIComponents.Add(uiAttribute.Name, type);
+            allUITypes.Add(uiAttribute.Name, type);
         }
     }
 
@@ -123,7 +123,7 @@ public class UIManager : MonoBehaviour
         }
 
         GameObject go = UIFactory.Create(name);
-        Type type = allUIComponents[name];
+        Type type = allUITypes[name];
         uiCpt = Activator.CreateInstance(type) as UICpt;
         uiCpt?.MAwake(name, go);
         
