@@ -1,37 +1,61 @@
-﻿using DG.Tweening;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
 [UI(UIName.PopTwo)]
 public partial class PopTwoCpt : UICpt
 {
-    private Button backBtn;
-    private Button popOneBtn;
-    private Button panelOneBtn;
-    private Button panelTwoBtn;
-
-    private GameObject root;
+    #region BindingFields
+    
+    public Button BackBtn;
+    
+        
+    public Button PopOneBtn;
+    
+        
+    public Button PanelOneBtn;
+    
+        
+    public Button PanelTwoBtn;
+    
+        
+    public GameObject Root;
+    
+    #endregion
+    
+    
     
     public override void Awake()
     {
-        backBtn = Get<Button>("BackBtn");
-        popOneBtn = Get<Button>("PopOneBtn");
-        panelOneBtn = Get<Button>("PanelOneBtn");
-        panelTwoBtn = Get<Button>("PanelTwoBtn");
+        #region BindingInit
         
-        backBtn.onClick.AddListener(OnBackBtnClick);
-        popOneBtn.onClick.AddListener(OnPopOneBtnClick);
-        panelOneBtn.onClick.AddListener(OnPanelOneBtnClick);
-        panelTwoBtn.onClick.AddListener(OnPanelTwoBtnClick);
-
-        root = Get<GameObject>("Root");
+        BackBtn = this.Get<Button>("BackBtn");
         
-        root.transform.localScale = Vector3.zero;
+                
+        PopOneBtn = this.Get<Button>("PopOneBtn");
+        
+                
+        PanelOneBtn = this.Get<Button>("PanelOneBtn");
+        
+                
+        PanelTwoBtn = this.Get<Button>("PanelTwoBtn");
+        
+                
+        Root = this.Get<GameObject>("Root");
+        
+        #endregion
+        
+        BackBtn.onClick.AddListener(OnBackBtnClick);
+        PopOneBtn.onClick.AddListener(OnPopOneBtnClick);
+        PanelOneBtn.onClick.AddListener(OnPanelOneBtnClick);
+        PanelTwoBtn.onClick.AddListener(OnPanelTwoBtnClick);
+        
+        Root.transform.localScale = Vector3.zero;
     }
 
     private void DoPopAnimation(float endValue, float duration = 0.5f)
     {
-        root.transform.DOScale(endValue, duration);
+        Root.transform.DOScale(endValue, duration);
         canvasGroup.DOFade(endValue, duration);
     }
 

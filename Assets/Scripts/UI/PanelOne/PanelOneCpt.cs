@@ -39,8 +39,6 @@ public partial class PanelOneCpt : UICpt
     
     private Action action;
     
-    private Text curNumText;
-    
     private List<PanelOneItemCpt> itemCptList = new List<PanelOneItemCpt>();
     
     public override void Awake()
@@ -92,7 +90,7 @@ public partial class PanelOneCpt : UICpt
     
     public void OnItemBtnClick(int num)
     {
-        curNumText.text = num.ToString();
+        CurNumText.text = num.ToString();
     }
 
     private void OnBackBtnClick()

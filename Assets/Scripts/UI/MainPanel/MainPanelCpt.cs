@@ -49,12 +49,12 @@ public partial class MainPanelCpt : UICpt
         
         #endregion
         
-        TimeText.text = DateTime.Now.ToString("HH:mm:ss");
-        
         PopOneBtn.onClick.AddListener(OnPopOneBtnClick);
         PopTwoBtn.onClick.AddListener(OnPopTwoBtnClick);
         PanelOneBtn.onClick.AddListener(OnPanelOneBtnClick);
         PanelTwoBtn.onClick.AddListener(OnPanelTwoBtnClick);
+        
+        TimeText.text = DateTime.Now.ToString("HH:mm:ss");
     }
 
     public override void Update()
