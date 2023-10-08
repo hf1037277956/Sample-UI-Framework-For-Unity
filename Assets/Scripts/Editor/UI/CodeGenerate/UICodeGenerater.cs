@@ -28,14 +28,14 @@ public static class UICodeGenerater
     {
         GameObject go = Selection.activeObject as GameObject;
 
-        //string path = AssetDatabase.GetAssetPath(go);
+        string path = AssetDatabase.GetAssetPath(go);
             
-        // int index2 = path.LastIndexOf('/');
-        // int index1 = path.LastIndexOf('/', index2 - 1);
-        // string panelName = path.Substring(index1 + 1, index2 - index1 - 1);
+        int index2 = path.LastIndexOf('/');
+        int index1 = path.LastIndexOf('/', index2 - 1);
+        string panelName = path.Substring(index1 + 1, index2 - index1 - 1);
         string cptName = go.name;
 
-        GeneratePanelCpt(go, cptName, cptName);
+        GeneratePanelCpt(go, panelName, cptName);
         AddPanelName(cptName);
         
         AssetDatabase.Refresh();
@@ -85,7 +85,7 @@ public static class UICodeGenerater
         string filePath = $"{Application.dataPath}/Scripts/UI/{panelName}/";
         if (Directory.Exists(filePath))
         {
-            Debug.Log($"{panelName}目录已存在! 为保护已存在的代码，不再执行生成新代码!");
+            Debug.LogWarning($"{panelName}目录已存在! 为保护已存在的代码，不再执行生成新代码!");
             return;
         } 
         
@@ -97,26 +97,26 @@ public static class UICodeGenerater
         content = content.Replace("[[CptName]]", cptName);
 
         string regionBindingFieldsStr = "#region BindingFields\r\n";
-        string regionBindingInitStr = "#region BindingInit\r\n";
+        //string regionBindingInitStr = "#region BindingInit\r\n";
         string endRegionStr = "#endregion\r\n";
         
         int indexFields = content.IndexOf(regionBindingFieldsStr, StringComparison.Ordinal) + regionBindingFieldsStr.Length;
         int indexFieldsEnd = content.IndexOf(endRegionStr, indexFields, StringComparison.Ordinal);
         string bindingFieldsSourceStr = content.Substring(indexFields, indexFieldsEnd - indexFields);
         
-        int indexInit = content.IndexOf(regionBindingInitStr, StringComparison.Ordinal) + regionBindingInitStr.Length;
-        int indexInitEnd = content.IndexOf(endRegionStr, indexInit, StringComparison.Ordinal);
-        string bindingInitSourceStr = content.Substring(indexInit, indexInitEnd - indexInit);
+        //int indexInit = content.IndexOf(regionBindingInitStr, StringComparison.Ordinal) + regionBindingInitStr.Length;
+        //int indexInitEnd = content.IndexOf(endRegionStr, indexInit, StringComparison.Ordinal);
+        //string bindingInitSourceStr = content.Substring(indexInit, indexInitEnd - indexInit);
 
         string bindingFieldsTargetStr = "";
-        string bindingInitTargetStr = "";
+        //string bindingInitTargetStr = "";
         foreach (var data in go.GetComponent<ReferenceCollector>().data)
         {
             bindingFieldsTargetStr += bindingFieldsSourceStr.Replace("[[CtrlType]]", data.type).Replace("[[CtrlName]]", data.key);
-            bindingInitTargetStr += bindingInitSourceStr.Replace("[[CtrlType]]", data.type).Replace("[[CtrlName]]", data.key);
+            //bindingInitTargetStr += bindingInitSourceStr.Replace("[[CtrlType]]", data.type).Replace("[[CtrlName]]", data.key);
         }
         content = content.Replace(bindingFieldsSourceStr, bindingFieldsTargetStr);
-        content = content.Replace(bindingInitSourceStr, bindingInitTargetStr);
+        //content = content.Replace(bindingInitSourceStr, bindingInitTargetStr);
             
         File.WriteAllText(filePath, content);
     }

@@ -8,47 +8,84 @@ using Random = System.Random;
 public partial class MainPanelCpt : UICpt
 {
     #region BindingFields
-    
-    public Text TimeText;
-    
-        
-    public Button PopOneBtn;
-    
-        
-    public Button PopTwoBtn;
-    
-        
-    public Button PanelOneBtn;
-    
-        
-    public Button PanelTwoBtn;
-    
+            
+    private Text _TimeText;
+    public Text TimeText
+    {
+        get
+        {
+            if (_TimeText == null)
+            {
+                _TimeText = this.Get<Text>("TimeText");
+            }
+            return _TimeText;
+        }
+    }
+            
+                
+    private Button _PopOneBtn;
+    public Button PopOneBtn
+    {
+        get
+        {
+            if (_PopOneBtn == null)
+            {
+                _PopOneBtn = this.Get<Button>("PopOneBtn");
+            }
+            return _PopOneBtn;
+        }
+    }
+            
+                
+    private Button _PopTwoBtn;
+    public Button PopTwoBtn
+    {
+        get
+        {
+            if (_PopTwoBtn == null)
+            {
+                _PopTwoBtn = this.Get<Button>("PopTwoBtn");
+            }
+            return _PopTwoBtn;
+        }
+    }
+            
+                
+    private Button _PanelOneBtn;
+    public Button PanelOneBtn
+    {
+        get
+        {
+            if (_PanelOneBtn == null)
+            {
+                _PanelOneBtn = this.Get<Button>("PanelOneBtn");
+            }
+            return _PanelOneBtn;
+        }
+    }
+            
+                
+    private Button _PanelTwoBtn;
+    public Button PanelTwoBtn
+    {
+        get
+        {
+            if (_PanelTwoBtn == null)
+            {
+                _PanelTwoBtn = this.Get<Button>("PanelTwoBtn");
+            }
+            return _PanelTwoBtn;
+        }
+    }
+            
     #endregion
+
+    private float _lastUpdateTime;
     
-    private float lastUpdateTime;
-    
-    private List<int> numList = new List<int>();
+    private readonly List<int> _numList = new List<int>();
     
     public override void Awake()
     {
-        #region BindingInit
-        
-        TimeText = this.Get<Text>("TimeText");
-        
-                
-        PopOneBtn = this.Get<Button>("PopOneBtn");
-        
-                
-        PopTwoBtn = this.Get<Button>("PopTwoBtn");
-        
-                
-        PanelOneBtn = this.Get<Button>("PanelOneBtn");
-        
-                
-        PanelTwoBtn = this.Get<Button>("PanelTwoBtn");
-        
-        #endregion
-        
         PopOneBtn.onClick.AddListener(OnPopOneBtnClick);
         PopTwoBtn.onClick.AddListener(OnPopTwoBtnClick);
         PanelOneBtn.onClick.AddListener(OnPanelOneBtnClick);
@@ -60,8 +97,8 @@ public partial class MainPanelCpt : UICpt
     public override void Update()
     {
         //限制刷新速度
-        if(Time.time - lastUpdateTime < 1f) return;
-        lastUpdateTime = Time.time;
+        if(Time.time - _lastUpdateTime < 1f) return;
+        _lastUpdateTime = Time.time;
             
         TimeText.text = DateTime.Now.ToString("HH:mm:ss");
     }
@@ -70,11 +107,11 @@ public partial class MainPanelCpt : UICpt
     {
         // 随机生成20个数字
         Random random = new Random();
-        numList.Clear();
+        _numList.Clear();
         for (int i = 0; i < 20; i++)
         {
             var num = random.Next(0, 100);
-            numList.Add(num);
+            _numList.Add(num);
         }
     }
     
@@ -97,7 +134,7 @@ public partial class MainPanelCpt : UICpt
     {
         UIManager.Instance.ShowPanel(UIName.PanelOne, new PanelOneCpt.PanelOneData()
         {
-            numList = numList
+            NumList = _numList
         });
     }
     

@@ -4,7 +4,7 @@ public static class UIFactory
 {
     public static GameObject Create(string name)
     {
-        GameObject obj = Resources.Load<GameObject>("UI/" + name);
+        GameObject obj = Resources.Load<GameObject>($"UI/{name}/" + name);
         
         if (obj == null)
         {

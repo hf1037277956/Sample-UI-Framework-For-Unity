@@ -7,66 +7,119 @@ using Object = UnityEngine.Object;
 [UI(UIName.PanelOne)]
 public partial class PanelOneCpt : UICpt
 {
+    #region BindingFields
+            
+    private Text _CurNumText;
+    public Text CurNumText
+    {
+        get
+        {
+            if (_CurNumText == null)
+            {
+                _CurNumText = this.Get<Text>("CurNumText");
+            }
+            return _CurNumText;
+        }
+    }
+            
+                
+    private Button _BackBtn;
+    public Button BackBtn
+    {
+        get
+        {
+            if (_BackBtn == null)
+            {
+                _BackBtn = this.Get<Button>("BackBtn");
+            }
+            return _BackBtn;
+        }
+    }
+            
+                
+    private Button _PopOneBtn;
+    public Button PopOneBtn
+    {
+        get
+        {
+            if (_PopOneBtn == null)
+            {
+                _PopOneBtn = this.Get<Button>("PopOneBtn");
+            }
+            return _PopOneBtn;
+        }
+    }
+            
+                
+    private Button _PopTwoBtn;
+    public Button PopTwoBtn
+    {
+        get
+        {
+            if (_PopTwoBtn == null)
+            {
+                _PopTwoBtn = this.Get<Button>("PopTwoBtn");
+            }
+            return _PopTwoBtn;
+        }
+    }
+            
+                
+    private Button _PanelTwoBtn;
+    public Button PanelTwoBtn
+    {
+        get
+        {
+            if (_PanelTwoBtn == null)
+            {
+                _PanelTwoBtn = this.Get<Button>("PanelTwoBtn");
+            }
+            return _PanelTwoBtn;
+        }
+    }
+            
+                
+    private ScrollRect _ScrollView;
+    public ScrollRect ScrollView
+    {
+        get
+        {
+            if (_ScrollView == null)
+            {
+                _ScrollView = this.Get<ScrollRect>("Scroll View");
+            }
+            return _ScrollView;
+        }
+    }
+            
+                
+    private GameObject _PanelOneItem;
+    public GameObject PanelOneItem
+    {
+        get
+        {
+            if (_PanelOneItem == null)
+            {
+                _PanelOneItem = this.Get<GameObject>("PanelOneItem");
+            }
+            return _PanelOneItem;
+        }
+    }
+            
+    #endregion
+
     public class PanelOneData
     {
-        public List<int> numList;
-        public Action action;
+        public Action Action;
+        public List<int> NumList;
     }
+
+    private Action _action;
     
-    #region BindingFields
-    
-    public Text CurNumText;
-    
-        
-    public Button BackBtn;
-    
-        
-    public Button PopOneBtn;
-    
-        
-    public Button PopTwoBtn;
-    
-        
-    public Button PanelTwoBtn;
-    
-        
-    public ScrollRect ScrollView;
-    
-        
-    public GameObject PanelOneItem;
-    
-    #endregion
-    
-    private Action action;
-    
-    private List<PanelOneItemCpt> itemCptList = new List<PanelOneItemCpt>();
-    
+    private readonly List<PanelOneItemCpt> _itemCptList = new List<PanelOneItemCpt>();
+
     public override void Awake()
     {
-        #region BindingInit
-        
-        CurNumText = this.Get<Text>("CurNumText");
-        
-                
-        BackBtn = this.Get<Button>("BackBtn");
-        
-                
-        PopOneBtn = this.Get<Button>("PopOneBtn");
-        
-                
-        PopTwoBtn = this.Get<Button>("PopTwoBtn");
-        
-                
-        PanelTwoBtn = this.Get<Button>("PanelTwoBtn");
-        
-                
-        ScrollView = this.Get<ScrollRect>("Scroll View");
-        
-                
-        PanelOneItem = this.Get<GameObject>("PanelOneItem");
-        
-        #endregion
-        
         BackBtn.onClick.AddListener(OnBackBtnClick);
         PopOneBtn.onClick.AddListener(OnPopOneBtnClick);
         PopTwoBtn.onClick.AddListener(OnPopTwoBtnClick);
@@ -78,13 +131,13 @@ public partial class PanelOneCpt : UICpt
         PanelOneData data = (PanelOneData)Data;
         if (data == null) return;
         
-        action = data.action;
+        _action = data.Action;
         
-        if(data.numList == null) return;
-        for (int i = 0; i < data.numList.Count; i++)
+        if(data.NumList == null) return;
+        for (int i = 0; i < data.NumList.Count; i++)
         {
-            itemCptList.Add(CreateItemCpt(ScrollView.content));
-            itemCptList[i].ApplyInfo(data.numList[i]);
+            _itemCptList.Add(CreateItemCpt(ScrollView.content));
+            _itemCptList[i].ApplyInfo(data.NumList[i]);
         }
     }
     
@@ -96,7 +149,7 @@ public partial class PanelOneCpt : UICpt
     private void OnBackBtnClick()
     {
         UIManager.Instance.ClosePanel(UIName.PanelOne);
-        action?.Invoke();
+        _action?.Invoke();
     }
     
     private void OnPopOneBtnClick()
