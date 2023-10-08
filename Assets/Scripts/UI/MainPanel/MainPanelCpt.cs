@@ -1,50 +1,60 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = System.Random;
 
 [UI(UIName.MainPanel)]
-public class MainPanel : UICpt
+public partial class MainPanelCpt : UICpt
 {
-    private Text timeText;
-
-    private Button _popOneBtn;
-    private Button popOneBtn
-    {
-        get
-        {
-            if (_popOneBtn == null)
-            {
-                _popOneBtn = Get<Button>("PopOneBtn");
-            }
-            return _popOneBtn;
-        }
-    }
+    #region BindingFields
     
+    public Text TimeText;
     
-    private Button popTwoBtn;
-    private Button panelOneBtn;
-    private Button panelTwoBtn;
+        
+    public Button PopOneBtn;
+    
+        
+    public Button PopTwoBtn;
+    
+        
+    public Button PanelOneBtn;
+    
+        
+    public Button PanelTwoBtn;
+    
+    #endregion
+    
+    private float lastUpdateTime;
     
     private List<int> numList = new List<int>();
     
-    private float lastUpdateTime;
-
     public override void Awake()
     {
-        timeText = Get<Text>("TimeText");
-        timeText.text = DateTime.Now.ToString("HH:mm:ss");
-
-        //popOneBtn = Get<Button>("PopOneBtn");
-        popTwoBtn = Get<Button>("PopTwoBtn");
-        panelOneBtn = Get<Button>("PanelOneBtn");
-        panelTwoBtn = Get<Button>("PanelTwoBtn");
+        #region BindingInit
         
-        popOneBtn.onClick.AddListener(OnPopOneBtnClick);
-        popTwoBtn.onClick.AddListener(OnPopTwoBtnClick);
-        panelOneBtn.onClick.AddListener(OnPanelOneBtnClick);
-        panelTwoBtn.onClick.AddListener(OnPanelTwoBtnClick);
+        TimeText = this.Get<Text>("TimeText");
+        
+                
+        PopOneBtn = this.Get<Button>("PopOneBtn");
+        
+                
+        PopTwoBtn = this.Get<Button>("PopTwoBtn");
+        
+                
+        PanelOneBtn = this.Get<Button>("PanelOneBtn");
+        
+                
+        PanelTwoBtn = this.Get<Button>("PanelTwoBtn");
+        
+        #endregion
+        
+        PopOneBtn.onClick.AddListener(OnPopOneBtnClick);
+        PopTwoBtn.onClick.AddListener(OnPopTwoBtnClick);
+        PanelOneBtn.onClick.AddListener(OnPanelOneBtnClick);
+        PanelTwoBtn.onClick.AddListener(OnPanelTwoBtnClick);
+        
+        TimeText.text = DateTime.Now.ToString("HH:mm:ss");
     }
 
     public override void Update()
@@ -53,7 +63,7 @@ public class MainPanel : UICpt
         if(Time.time - lastUpdateTime < 1f) return;
         lastUpdateTime = Time.time;
             
-        timeText.text = DateTime.Now.ToString("HH:mm:ss");
+        TimeText.text = DateTime.Now.ToString("HH:mm:ss");
     }
 
     public override void ApplyInfo()

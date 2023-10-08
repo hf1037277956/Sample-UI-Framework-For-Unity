@@ -1,46 +1,76 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
 [UI(UIName.PanelOne)]
-public class PanelOneCpt : UICpt
+public partial class PanelOneCpt : UICpt
 {
     public class PanelOneData
     {
-        public Action action;
         public List<int> numList;
+        public Action action;
     }
     
-    private Text curNumText;
+    #region BindingFields
     
-    private Button backBtn;
-    private Button popOneBtn;
-    private Button popTwoBtn;
-    private Button panelTwoBtn;
+    public Text CurNumText;
     
-    private ScrollRect scrollRect;
+        
+    public Button BackBtn;
+    
+        
+    public Button PopOneBtn;
+    
+        
+    public Button PopTwoBtn;
+    
+        
+    public Button PanelTwoBtn;
+    
+        
+    public ScrollRect ScrollView;
+    
+        
+    public GameObject PanelOneItem;
+    
+    #endregion
+    
+    private Action action;
     
     private List<PanelOneItemCpt> itemCptList = new List<PanelOneItemCpt>();
-
-    private Action action;
     
     public override void Awake()
     {
-        curNumText = Get<Text>("CurNumText");
+        #region BindingInit
         
-        backBtn = Get<Button>("BackBtn");
-        popOneBtn = Get<Button>("PopOneBtn");
-        popTwoBtn = Get<Button>("PopTwoBtn");
-        panelTwoBtn = Get<Button>("PanelTwoBtn");
+        CurNumText = this.Get<Text>("CurNumText");
         
-        backBtn.onClick.AddListener(OnBackBtnClick);
-        popOneBtn.onClick.AddListener(OnPopOneBtnClick);
-        popTwoBtn.onClick.AddListener(OnPopTwoBtnClick);
-        panelTwoBtn.onClick.AddListener(OnPanelTwoBtnClick);
+                
+        BackBtn = this.Get<Button>("BackBtn");
         
-        scrollRect = Get<ScrollRect>("Scroll View");
+                
+        PopOneBtn = this.Get<Button>("PopOneBtn");
+        
+                
+        PopTwoBtn = this.Get<Button>("PopTwoBtn");
+        
+                
+        PanelTwoBtn = this.Get<Button>("PanelTwoBtn");
+        
+                
+        ScrollView = this.Get<ScrollRect>("Scroll View");
+        
+                
+        PanelOneItem = this.Get<GameObject>("PanelOneItem");
+        
+        #endregion
+        
+        BackBtn.onClick.AddListener(OnBackBtnClick);
+        PopOneBtn.onClick.AddListener(OnPopOneBtnClick);
+        PopTwoBtn.onClick.AddListener(OnPopTwoBtnClick);
+        PanelTwoBtn.onClick.AddListener(OnPanelTwoBtnClick);
     }
 
     public override void ApplyInfo()
@@ -53,14 +83,14 @@ public class PanelOneCpt : UICpt
         if(data.numList == null) return;
         for (int i = 0; i < data.numList.Count; i++)
         {
-            itemCptList.Add(CreateItemCpt(scrollRect.content));
+            itemCptList.Add(CreateItemCpt(ScrollView.content));
             itemCptList[i].ApplyInfo(data.numList[i]);
         }
     }
     
     public void OnItemBtnClick(int num)
     {
-        curNumText.text = num.ToString();
+        CurNumText.text = num.ToString();
     }
 
     private void OnBackBtnClick()
@@ -86,7 +116,7 @@ public class PanelOneCpt : UICpt
 
     private PanelOneItemCpt CreateItemCpt(Transform root)
     {
-        GameObject prefab = Get<GameObject>("PanelOneItem");
+        GameObject prefab = PanelOneItem;
         GameObject go = Object.Instantiate(prefab, root);
         PanelOneItemCpt itemCpt = Create<PanelOneItemCpt>(go);
         return itemCpt;
