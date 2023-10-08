@@ -2,31 +2,31 @@
 
 public class PanelOneItemCpt : UIBaseCpt
 {
-    private Text numText;
+    private Text _numText;
 
-    private Button Btn;
+    private Button _btn;
     
-    private int num;
+    private int _num;
     
     public override void Awake()
     {
-        numText = Get<Text>("NumText");
+        _numText = Get<Text>("NumText");
         
-        Btn = Get<Button>("Btn");
+        _btn = Get<Button>("Btn");
         
-        Btn.onClick.AddListener(OnSelfClick);
+        _btn.onClick.AddListener(OnSelfClick);
     }
 
-    public void ApplyInfo(int _num)
+    public void ApplyInfo(int num)
     {
-        num = _num;
-        this.numText.text = num.ToString();
+        this._num = num;
+        this._numText.text = this._num.ToString();
 
         SetActive(true);
     }
     
     private void OnSelfClick()
     {
-        (UIManager.Instance.GetUICpt(UIName.PanelOne) as PanelOneCpt)?.OnItemBtnClick(num);
+        (UIManager.Instance.GetUICpt(UIName.PanelOne) as PanelOneCpt)?.OnItemBtnClick(_num);
     }
 }

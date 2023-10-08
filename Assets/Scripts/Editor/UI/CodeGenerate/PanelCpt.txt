@@ -5,22 +5,27 @@ using UnityEngine.UI;
 public partial class [[CptName]]Cpt : UICpt
 {
     #region BindingFields
-    
-    public [[CtrlType]] [[CtrlName]];
-    
+            
+    private [[CtrlType]] _[[CtrlName]];
+    public [[CtrlType]] [[CtrlName]]
+    {
+        get
+        {
+            if (_[[CtrlName]] == null)
+            {
+                _[[CtrlName]] = this.Get<[[CtrlType]]>("[[CtrlName]]");
+            }
+            return _[[CtrlName]];
+        }
+    }
+            
     #endregion
     
     
     
     public override void Awake()
     {
-        #region BindingInit
-        
-        [[CtrlName]] = this.Get<[[CtrlType]]>("[[CtrlName]]");
-        
-        #endregion
-        
-        
+        base.Awake();
     }
 
     public override void ApplyInfo()

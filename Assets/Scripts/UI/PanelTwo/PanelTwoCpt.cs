@@ -5,39 +5,66 @@ using UnityEngine.UI;
 public partial class PanelTwoCpt : UICpt
 {
     #region BindingFields
-    
-    public Button BackBtn;
-    
-        
-    public Button PopOneBtn;
-    
-        
-    public Button PopTwoBtn;
-    
-        
-    public Button PanelOneBtn;
-    
+            
+    private Button _BackBtn;
+    public Button BackBtn
+    {
+        get
+        {
+            if (_BackBtn == null)
+            {
+                _BackBtn = this.Get<Button>("BackBtn");
+            }
+            return _BackBtn;
+        }
+    }
+            
+                
+    private Button _PopOneBtn;
+    public Button PopOneBtn
+    {
+        get
+        {
+            if (_PopOneBtn == null)
+            {
+                _PopOneBtn = this.Get<Button>("PopOneBtn");
+            }
+            return _PopOneBtn;
+        }
+    }
+            
+                
+    private Button _PopTwoBtn;
+    public Button PopTwoBtn
+    {
+        get
+        {
+            if (_PopTwoBtn == null)
+            {
+                _PopTwoBtn = this.Get<Button>("PopTwoBtn");
+            }
+            return _PopTwoBtn;
+        }
+    }
+            
+                
+    private Button _PanelOneBtn;
+    public Button PanelOneBtn
+    {
+        get
+        {
+            if (_PanelOneBtn == null)
+            {
+                _PanelOneBtn = this.Get<Button>("PanelOneBtn");
+            }
+            return _PanelOneBtn;
+        }
+    }
+            
     #endregion
-    
-    
-    
+
     public override void Awake()
     {
-        #region BindingInit
-        
-        BackBtn = this.Get<Button>("BackBtn");
-        
-                
-        PopOneBtn = this.Get<Button>("PopOneBtn");
-        
-                
-        PopTwoBtn = this.Get<Button>("PopTwoBtn");
-        
-                
-        PanelOneBtn = this.Get<Button>("PanelOneBtn");
-        
-        #endregion
-        
         BackBtn.onClick.AddListener(OnBackBtnClick);
         PopOneBtn.onClick.AddListener(OnPopOneBtnClick);
         PopTwoBtn.onClick.AddListener(OnPopTwoBtnClick);
