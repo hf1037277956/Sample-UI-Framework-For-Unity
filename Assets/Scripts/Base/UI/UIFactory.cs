@@ -8,7 +8,7 @@ public static class UIFactory
         
         if (obj == null)
         {
-            Debug.LogError("UIPrefab is null, name = " + name);
+            Debug.LogError("UIPrefab is null, plz check path , name = " + name);
             return null;
         }
 
