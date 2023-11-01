@@ -42,6 +42,8 @@ public class UICpt : UIBaseCpt
     
     public void MAwake(string name, GameObject go)
     {
+        if (go == null) return;
+        
         Name = name;
         canvasGroup = go.transform.GetComponent<CanvasGroup>();
         layerDesc = go.transform.GetComponent<LayerDesc>();

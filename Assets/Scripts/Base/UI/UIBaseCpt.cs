@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class UIBaseCpt
 {
-    public RectTransform rectTransform;
-    public GameObject gameObject;
     public Animation animation;
+    public GameObject gameObject;
+    public RectTransform rectTransform;
     public ReferenceCollector rc;
     
-    private Dictionary<long, UIBaseCpt> childUIBaseCpts = new Dictionary<long, UIBaseCpt>();
+    private readonly Dictionary<long, UIBaseCpt> childUIBaseCpts = new Dictionary<long, UIBaseCpt>();
 
     public long Id { get; set; }
 
@@ -20,17 +20,32 @@ public class UIBaseCpt
 
     public virtual void Update()
     {
-        
+        // 调用所有子UIBaseCpt的Update
+        if (childUIBaseCpts.Count <= 0) return;
+        foreach (var uiBaseCpt in childUIBaseCpts.Values)
+        {
+            uiBaseCpt.Update();
+        }
     }
     
     public virtual void FixedUpdate()
     {
-        
+        // 调用所有子UIBaseCpt的FixedUpdate
+        if (childUIBaseCpts.Count <= 0) return;
+        foreach (var uiBaseCpt in childUIBaseCpts.Values)
+        {
+            uiBaseCpt.FixedUpdate();
+        }
     }
     
     public virtual void LateUpdate()
     {
-        
+        // 调用所有子UIBaseCpt的LateUpdate
+        if (childUIBaseCpts.Count <= 0) return;
+        foreach (var uiBaseCpt in childUIBaseCpts.Values)
+        {
+            uiBaseCpt.LateUpdate();
+        }
     }
 
     public virtual void SetActive(bool active , Action action = null)
