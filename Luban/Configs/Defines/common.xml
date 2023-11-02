@@ -1,0 +1,38 @@
+<module name="common">
+
+	<!-- 常量表 -->
+	<bean name="CommonConst">
+		<var name="TimeZone" type="int" />
+		<var name="HourOffset" type="int" />
+		<var name="PlayableMinAppVerion" type="string" />
+		<var name="NewAppDownloadUrl" type="string" />
+	</bean>
+	<table name="TbCommonConst" value="CommonConst" mode="one" input="common/CommonConst.xlsx"/>
+
+	<!-- 本地化表 -->
+	<bean name="L10nConfig">
+		<var name="Id" type="int" />
+		<var name="Text" type="text" />
+	</bean>
+	<table name="TbL10nConfig" value="L10nConfig" input="common/L10nConfig.xlsx" group="c" />
+
+	<!-- 错误码表 -->
+	<bean name="ErrorCodeConfig">
+		<var name="Id" type="int" />
+		<var name="Text" type="text" />
+	</bean>
+	<table name="TbErrorCodeConfig" value="ErrorCodeConfig" input="common/ErrorCodeConfig.xlsx" group="c" />
+
+	<!-- 符号表 -->
+	<bean name="SymbolsConfig">
+		<var name="Symbol" type="string" />
+	</bean>
+	<table name="TbSymbolsConfig" value="SymbolsConfig" mode="list" input="common/SymbolsConfig.xlsx" />
+
+	<!-- 屏蔽字表 -->
+	<bean name="KeywordsFilterConfig">
+		<var name="Keyword" type="string" />
+	</bean>
+	<table name="TbKeywordsFilterConfig" value="KeywordsFilterConfig" mode="list" input="common/KeywordsFilterConfig.xlsx" />
+
+</module>

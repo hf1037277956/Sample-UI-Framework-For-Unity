@@ -25,12 +25,14 @@ public class GameManager : MonoBehaviour
         Assembly assembly = Assembly.GetExecutingAssembly();
         UIManager.Instance.Init(assembly);
         EventSystem.Instance.Init(assembly);
+        ConfigManager.Instance.Init();
     }
 
     private void OnDestroy()
     {
         UIManager.Instance = null;
         EventSystem.Instance = null;
+        ConfigManager.Instance = null;
         InputLockSystem.Instance = null;
     }
 }

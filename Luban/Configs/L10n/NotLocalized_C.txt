@@ -1,0 +1,9 @@
+CharacterName_1|斯特
+CharacterName_2|拝迪
+CharacterName_3|怀特
+CharacterName_4|伯德曼
+L10n_1|来自L10n的测试文本
+L10n_200002|网络错误
+L10n_200004|账号格式错误
+L10n_200005|密码格式错误
+L10n_200103|找不到配置
