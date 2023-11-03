@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "Configs",
+			"path": "Luban\\Configs"
+		}
+	],
+	"settings": {
+		"files.exclude": {
+			"**/*.meta": true
+		}
+	}
+}

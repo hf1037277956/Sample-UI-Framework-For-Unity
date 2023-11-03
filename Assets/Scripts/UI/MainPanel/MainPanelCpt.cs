@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Config.charcter;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = System.Random;
@@ -113,6 +114,8 @@ public partial class MainPanelCpt : UICpt
             var num = random.Next(0, 100);
             _numList.Add(num);
         }
+
+        Debug.Log(TbCharacterConfig.Instance.Get(101).Name);
     }
     
     public void OnGameStart()

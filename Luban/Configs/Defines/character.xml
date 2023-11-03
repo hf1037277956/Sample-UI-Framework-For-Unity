@@ -1,0 +1,11 @@
+<module name="charcter">
+	
+	<!-- 角色基础信息表 -->
+	<bean name="CharacterConfig">
+		<var name="Id" type="int" />
+		<var name="Name" type="text" />
+		<var name="Info" type="string" />
+	</bean>
+	<table name="TbCharacterConfig" value="CharacterConfig"  input="character/CharacterConfig.xlsx"/>
+
+</module>
