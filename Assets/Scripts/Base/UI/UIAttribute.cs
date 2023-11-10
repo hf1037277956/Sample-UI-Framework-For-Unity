@@ -1,7 +1,4 @@
-﻿using System;
-
-[AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
-public class UIAttribute : Attribute
+﻿public class UIAttribute : BaseAttribute
 {
     public string Name { get; }
 
