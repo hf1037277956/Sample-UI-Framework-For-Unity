@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Prefabs
+  m_EditorClassIdentifier: 
+  m_GroupName: Prefabs
+  m_Data:
+    m_SerializedData: []
+  m_GUID: d199ed9727f96c5458fb0d36043aa545
+  m_SerializeEntries:
+  - m_GUID: 3d76c355ef36ae544b06bdf7a1e3f169
+    m_Address: Prefab/UI/GUI.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+  - m_GUID: 98449c20947002e43abd9613ca331ec7
+    m_Address: UI/MainPanel/MainPanel.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+  - m_GUID: 8ddbb2088859d354b820b1c4b45d8f4c
+    m_Address: UI/PanelOne/PanelOne 1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: ea54c4cbba87c6a41b5ae611faa063e4, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 5293045a87ced464a884e6d97cabdc50, type: 2}
+    - {fileID: 11400000, guid: c6d61ef152c91904fadb878c9f8d996b, type: 2}
