@@ -27,11 +27,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - default
-  - m_GUID: 8ddbb2088859d354b820b1c4b45d8f4c
-    m_Address: UI/PanelOne/PanelOne 1.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - default
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: ea54c4cbba87c6a41b5ae611faa063e4, type: 2}
   m_SchemaSet:
