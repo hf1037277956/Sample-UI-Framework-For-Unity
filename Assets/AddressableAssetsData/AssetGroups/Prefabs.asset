@@ -18,12 +18,47 @@ MonoBehaviour:
   m_GUID: d199ed9727f96c5458fb0d36043aa545
   m_SerializeEntries:
   - m_GUID: 3d76c355ef36ae544b06bdf7a1e3f169
-    m_Address: Prefab/UI/GUI.prefab
+    m_Address: UI/GUI.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - default
   - m_GUID: 98449c20947002e43abd9613ca331ec7
     m_Address: UI/MainPanel/MainPanel.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+  - m_GUID: 70530f28aaf4c2348a431149d59b1e4d
+    m_Address: UI/PopTwo/PopTwo.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+  - m_GUID: 6e659ba88dccf1b44b6d7d98410cde9f
+    m_Address: UI/PopOne/PopOne.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+  - m_GUID: 340a1a48b7aa0404fb92d49819312848
+    m_Address: UI/PanelOne/PanelOne.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+  - m_GUID: eb3a0dd62d4ae4e4f82b652aa302a989
+    m_Address: UI/PopThree/PopThree.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+  - m_GUID: 8dcc685a216288944b21cb134bd12b6a
+    m_Address: UI/PanelTwo/PanelTwo.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+  - m_GUID: bffe5fb438dab53438ed09a111b32faa
+    m_Address: UI/PanelThree/PanelThree.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+  - m_GUID: 3958b3dbfc97c8347b286d78f40eec37
+    m_Address: UI/PanelThree/PanelThreeItemCpt.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - default

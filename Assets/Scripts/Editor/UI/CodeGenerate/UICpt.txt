@@ -1,0 +1,30 @@
+using UnityEngine;
+using UnityEngine.UI;
+
+public class [[CptName]]Cpt : UIBaseCpt
+{
+    #region BindingFields
+            
+    private [[CtrlType]] _[[CtrlName]];
+    public [[CtrlType]] [[CtrlName]]
+    {
+        get
+        {
+            if (_[[CtrlName]] == null)
+            {
+                _[[CtrlName]] = this.Get<[[CtrlType]]>("[[CtrlName]]");
+            }
+            return _[[CtrlName]];
+        }
+    }
+            
+    #endregion
+    
+    
+    
+    public override void Awake()
+    {
+        base.Awake();
+    }
+
+}

@@ -6,5 +6,6 @@ public static class UIName
     public const string PopOne = "PopOne";
     public const string PopTwo = "PopTwo";
     public const string PopThree = "PopThree"; 
-    // 在这里添加新的UI名字
+    public const string PanelThree = "PanelThree";
+// 在这里添加新的UI名字
 }
