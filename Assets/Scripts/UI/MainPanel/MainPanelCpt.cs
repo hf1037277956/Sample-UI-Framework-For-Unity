@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
 using Config.charcter;
+using Cysharp.Threading.Tasks;
+using DG.Tweening;
+using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = System.Random;
@@ -114,6 +117,8 @@ public partial class MainPanelCpt : UICpt
             var num = random.Next(0, 100);
             _numList.Add(num);
         }
+
+        TimeText.transform.DOLocalMoveX(370, 3f);
 
         Debug.Log(TbCharacterConfig.Instance.Get(101).Name);
     }
